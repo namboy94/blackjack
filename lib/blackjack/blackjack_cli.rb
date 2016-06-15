@@ -28,7 +28,8 @@ class BlackjackCli
     # Constructor for the BlackJackCli class
     # @return [nil]
     def initialize
-        puts 'Blackjack CLI started'.set_attributes([47, 30])
+        @default_text_color = [LIGHT_GRAY_BG, BLACK_FG]
+        puts " Blackjack CLI started \n\n".set_attributes(@default_text_color)
         @blackjack = Game.new
     end
 
@@ -56,11 +57,11 @@ class BlackjackCli
         print_result(result)
 
         if result[2] == 'win'
-            puts 'You won!'.set_attributes([47, 30])
+            puts ' You won :D '.set_attributes([GREEN_BG, BLACK_FG])
         elsif result[2] == 'loss'
-            puts 'You lost :('.set_attributes([47, 30])
+            puts ' You lost :( '.set_attributes([RED_BG, BLACK_FG])
         elsif result[2] == 'draw'
-            puts "It's a draw".set_attributes([47, 30])
+            puts " It's a draw ".set_attributes([[YELLOW_BG, BLACK_FG]])
         end
 
         if result[2] != 'undecided'
@@ -74,7 +75,7 @@ class BlackjackCli
     # This pauses the game until the user presses enter/return before starting a new game
     # @return [nil]
     def pause_when_game_ends
-        puts 'Press enter to start a new game'.set_attributes([47, 30])
+        puts ' Press enter to start a new game '.set_attributes(@default_text_color)
         gets
     end
 
@@ -82,10 +83,13 @@ class BlackjackCli
     # @param [Card Array, Card Array] result the result to be displayed
     # @return [nil]
     def print_result(result)
-        puts "Player Cards: (#{Game.calculate_optimal_card_score(result[0])})".set_attributes([47, 30])
+        puts " Player Cards: (#{Game.calculate_optimal_card_score(result[0])}) \n"
+                 .set_attributes(@default_text_color)
         puts format_cards(result[0])
-        puts "\nDealer Cards: (#{Game.calculate_optimal_card_score(result[1])})".set_attributes([47, 30])
+        puts "\n Dealer Cards: (#{Game.calculate_optimal_card_score(result[1])}) \n"
+                 .set_attributes(@default_text_color)
         puts format_cards(result[1])
+        puts "\n"
     end
 
     # Formats cards to be displayed side-by-side
@@ -115,12 +119,13 @@ class BlackjackCli
     # Gets the user's input on what to do next
     # @return [string] the (validated) user input
     def get_play_command
-    puts 'What would you like to do? (hit|stand)'.set_attributes([47, 30])
+    puts ' What would you like to do? (hit|stand) '.set_attributes(@default_text_color)
     input = gets
     while not input == "hit\n" and not input == "stand\n"
-        puts "Please enter 'hit' or 'stand'".set_attributes([47, 30])
+        puts " Please enter 'hit' or 'stand' ".set_attributes(@default_text_color)
         input = gets
     end
+    puts "\n"
     input
     end
 

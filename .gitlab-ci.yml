@@ -1,0 +1,13 @@
+stages:
+    - mirror
+    - build
+    - deploy
+
+test:
+    stage: mirror
+    branches:
+        - master
+    script:
+        - ls -a
+        - ls .. -a
+        - pwd

@@ -57,7 +57,7 @@ class Card
         ascii_card = "#{top}\n| #{number}" + ' ' * offset + "|\n"
         ascii_card += empty_row * 2 + "|    #{suit}    |\n" + empty_row * 2
         ascii_card += '|' + ' ' * offset + "#{number} |\n#{bottom}"
-        ascii_card.set_attributes([107, 30])  # BG = White, FG = Black
+        ascii_card.set_attributes([WHITE_BG, BLACK_FG])
     end
 
 
@@ -76,9 +76,9 @@ class Card
 
         suit = suits[type]
         if type == 'spades' or type == 'clubs'
-            suit = suit.set_attributes([30], [107, 30]) # FG = Black, return to BG = White, FG = Black
+            suit = suit.set_attributes([BLACK_FG], [WHITE_BG, BLACK_FG])
         else
-            suit = suit.set_attributes([31], [107, 30]) # FG = Red, return to BG = White, FG = Black
+            suit = suit.set_attributes([RED_FG], [WHITE_BG, BLACK_FG])
         end
 
         if number < 10 and number != 1
@@ -101,7 +101,7 @@ class Card
     def generate_cardback
         ("┌─────────┐\n" +
         ("│░░░░░░░░░│\n" * 7) +
-         '└─────────┘').set_attributes([107, 30]) # BG = White, FG = Black
+         '└─────────┘').set_attributes([WHITE_BG, BLACK_FG])
     end
 
     # Flips over the card so that the cardback is shown instead of the generated ASCII card

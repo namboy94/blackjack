@@ -20,3 +20,6 @@
 #
 
 require_relative('../lib/blackjack/blackjack_cli')
+
+cli = BlackjackCli.new
+cli.game_loop
