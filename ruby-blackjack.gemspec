@@ -19,9 +19,15 @@
 #    along with ruby-blackjack. If not, see <http://www.gnu.org/licenses/>.
 #
 
+# To build, enter 'gem build ruby-blackjack.gemspec'
+# To publish, enter 'gem push ruby-blackjack-<version>.gem'
+# To install, enter 'gem install ruby-blackjack-<version>.gem'
+# To store credentials locally, enter
+# curl -u <username> https://rubygems.org/api/v1/api_key.yaml > ~/.gem/credentials; chmod 0600 ~/.gem/credentials
+
 Gem::Specification.new do |gem|
     gem.name        = 'ruby-blackjack'
-    gem.version     = '0.1.0'
+    gem.version     = '0.1.1'
 
     gem.summary     = 'Ruby Blackjack'
     gem.description = 'A Blackjack CLI game'
