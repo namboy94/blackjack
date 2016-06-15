@@ -125,8 +125,3 @@ class BlackjackCli
     end
 
 end
-
-if __FILE__ == $0
-cli = BlackjackCli.new
-cli.game_loop
-end
