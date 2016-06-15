@@ -18,6 +18,7 @@ build_gem:
         - master
     script:
         gem build ruby-blackjack.gemspec
+        ls
     artifacts:
         paths:
             - ./*.gem
@@ -27,5 +28,6 @@ deploy_gem:
     only:
         - master
     script:
-        - gem push *.gem
-        - rm *.gem
+        - gem push ./*.gem
+        - ls
+        - rm ./*.gem
