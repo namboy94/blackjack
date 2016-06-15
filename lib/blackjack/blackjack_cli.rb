@@ -1,6 +1,6 @@
-#Copyright 2016 Hermann Krumrey
+# Copyright 2016 Hermann Krumrey
 #
-#This file is part of ruby-blackjack.
+# This file is part of ruby-blackjack.
 #
 #    ruby-blackjack is a program that lets a user play Blackjack using
 #    a command line interface.
@@ -68,7 +68,7 @@ class BlackjackCli
   end
 
   def pause_when_game_ends
-    puts 'Press enter to continue'.set_attributes([47, 30])
+    puts 'Press enter to start a new game'.set_attributes([47, 30])
     gets
   end
 

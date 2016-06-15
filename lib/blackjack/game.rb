@@ -1,6 +1,6 @@
-#Copyright 2016 Hermann Krumrey
+# Copyright 2016 Hermann Krumrey
 #
-#This file is part of ruby-blackjack.
+# This file is part of ruby-blackjack.
 #
 #    ruby-blackjack is a program that lets a user play Blackjack using
 #    a command line interface.
@@ -36,6 +36,15 @@ class Game
     @used_cards = []
     @player_cards = []
     @dealer_cards = []
+  end
+
+  def start
+    player_hit
+    player_hit
+    dealer_hit
+    result = dealer_hit
+    @dealer_cards[1].flip_over
+    result
   end
 
   # Generates a new deck of cards
@@ -75,36 +84,51 @@ class Game
   # @return [boolean or Array[Card]] false, if the player is busted
   #                                  true, if the dealer is busted
   #                                  the lists of cards if both players are still in the run
-  def evaluate
+  def evaluate(player_standing = false)
+    player_cards = @player_cards
+    dealer_cards = @dealer_cards
+    state = 'undecided'
     if @player_score > 21
-      cleanup
-      false
+      state = 'loss'
     elsif @dealer_score > 21
-      cleanup
-      true
-    else
-      return @player_cards, @dealer_cards
+      state = 'win'
+    elsif player_standing and @player_score > @dealer_score
+      state = 'win'
+    elsif player_standing and @player_score < @dealer_score
+      state = 'loss'
+    elsif player_standing and @player_score == @dealer_score
+      state = 'draw'
     end
+
+    if state != 'undecided'
+      player_cards, dealer_cards = cleanup
+    end
+
+    return player_cards, dealer_cards, state
   end
 
   # If the player decides to no longer receive cards, this method should be called
   # @return [boolean or Array[Card]] the evaluation of the turn. Check the evaluate() method for more information
   def player_stand
+    @dealer_cards[1].flip_over
     while @dealer_score < 17
       dealer_hit
     end
-    evaluate
+    evaluate(true)
   end
 
   # Resets the game to make room for a new one
   def cleanup
     @used_cards += @player_cards + @dealer_cards
-    @player_cards = []
-    @dealer_cards = []
     @player_score = 0
     @dealer_score = 0
     @player_ace_count = 0
     @dealer_ace_count = 0
+    old_player_cards = @player_cards.clone
+    old_dealer_cards = @dealer_cards.clone
+    @player_cards = []
+    @dealer_cards = []
+    return old_player_cards, old_dealer_cards
   end
 
   # Normalizes the score to be the largest possible value under 22.
@@ -133,6 +157,24 @@ class Game
     return current_score, ace_count
   end
 
+  def self.calculate_optimal_card_score(cards)
+    score = 0
+    aces = 0
+    cards.each { |card|
+      unless card.is_flipped  # == if card is not flipped
+        score += card.get_value
+        if card.is_ace
+          aces += 1
+        end
+      end
+    }
+    while score > 21 and aces > 0
+      aces -= 1
+      score -= 10
+    end
+    score
+  end
+
   # Draws a new card
   # It automatically stocks up the deck with previously used cards
   # @return [Card] the newly drawn card
@@ -142,5 +184,13 @@ class Game
       @used_cards = []
     end
     @deck.pop
+  end
+
+  def get_player_score
+    @player_score
+  end
+
+  def get_dealer_score
+    @dealer_score
   end
 end

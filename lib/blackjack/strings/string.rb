@@ -1,6 +1,6 @@
-#Copyright 2016 Hermann Krumrey
+# Copyright 2016 Hermann Krumrey
 #
-#This file is part of ruby-blackjack.
+# This file is part of ruby-blackjack.
 #
 #    ruby-blackjack is a program that lets a user play Blackjack using
 #    a command line interface.
@@ -19,10 +19,21 @@
 #    along with ruby-blackjack. If not, see <http://www.gnu.org/licenses/>.
 #
 
-def ok
-  puts "OK"
-end
+class String
 
-if __FILE__ == $0
-  ok
+  def set_attributes(attributes = [], previous_attributes = [])
+    mode_start_string = ''
+    modes_end_string = "\e[0m"
+    attributes.each { |attribute|
+      mode_start_string += "\e[#{attribute}m"
+    }
+    colorized_string = mode_start_string
+    colorized_string += self.gsub("\n", "#{modes_end_string}\n#{mode_start_string}")
+    colorized_string += modes_end_string
+    previous_attributes.each { |attribute|
+      colorized_string += "\e[#{attribute}m"
+    }
+    colorized_string
+  end
+
 end
