@@ -5,7 +5,7 @@ stages:
 
 test:
     stage: mirror
-    branches:
+    only:
         - master
     script:
         - ls -a
