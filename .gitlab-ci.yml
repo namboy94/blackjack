@@ -18,6 +18,9 @@ build_gem:
         - master
     script:
         gem build ruby-blackjack.gemspec
+    artifacts:
+        paths:
+            - ruby-blackjack-*.gem
 
 deploy_gem:
     stage: deploy
