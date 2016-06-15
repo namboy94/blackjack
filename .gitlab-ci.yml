@@ -20,12 +20,12 @@ build_gem:
         gem build ruby-blackjack.gemspec
     artifacts:
         paths:
-            - ruby-blackjack-*.gem
+            - ./*.gem
 
 deploy_gem:
     stage: deploy
     only:
         - master
     script:
-        - gem push ruby-blackjack-*.gem
-        - rm ruby-blackjack-*.gem
+        - gem push *.gem
+        - rm *.gem
