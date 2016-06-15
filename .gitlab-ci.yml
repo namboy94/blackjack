@@ -28,6 +28,7 @@ deploy_gem:
     only:
         - master
     script:
+        - ls
         - gem push ./*.gem
         - ls
         - rm ./*.gem
