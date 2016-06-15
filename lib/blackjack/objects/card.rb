@@ -19,7 +19,6 @@
 #    along with ruby-blackjack. If not, see <http://www.gnu.org/licenses/>.
 #
 
-
 # Class that models a playing card. It manages the value of the card in regards to
 # blackjack and generates ASCII art of the card
 class Card
@@ -39,7 +38,7 @@ class Card
 
     if number < 10 and number != 1
       @value = number
-      display_number = number
+      display_number = number.to_s
     elsif number >= 10 and number != 11
       @value = 10
       display_number = special_cards[number]
@@ -49,12 +48,34 @@ class Card
       display_number = 'A'
     end
 
-    @ascii_card = "#{top}\n| #{display_number}       |\n"
+    offset = 8 - display_number.length
+
+    @backside = self.class.generate_cardback
+
+    @ascii_card = "#{top}\n| #{display_number}" + ' ' * offset + "|\n"
     @ascii_card += empty_row * 2
     @ascii_card += "|    #{suit}    |\n"
     @ascii_card += empty_row * 2
-    @ascii_card += "|       #{display_number} |\n#{bottom}"
+    @ascii_card += '|' + ' ' * offset + "#{display_number} |\n#{bottom}"
 
+  end
+
+  def flip_over
+    cached = @ascii_card
+    @ascii_card = @backside
+    @backside = cached
+  end
+
+  def get_ascii_card
+    @ascii_card
+  end
+
+  def get_value
+    @value
+  end
+
+  def is_ace
+    @ace
   end
 
   # Prints the card art to the console
@@ -64,6 +85,10 @@ class Card
 
   # Generates a cardback ASCII art
   def self.generate_cardback
-    return "┌─────────┐\n" + ("│░░░░░░░░░│\n" * 6) + '└─────────┘'
+    return colorize("┌─────────┐\n" + ("│░░░░░░░░░│\n" * 7) + '└─────────┘', 31)
+  end
+
+  def self.colorize(string, mode)
+    return "\e[#{mode}m" + string.gsub!("\n", "\e[0m\n\e[#{mode}m") + "\e[0m"
   end
 end
