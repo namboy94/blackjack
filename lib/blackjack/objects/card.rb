@@ -35,10 +35,10 @@ class Card
     # @return [nil]
     def initialize(type, number)
 
-      suit, @value, display_number, @ace = determine_card_data(type, number)
-      @backside = generate_cardback
-      @flipped = false
-      @ascii_card = format_card(suit, display_number)
+        suit, @value, display_number, @ace = determine_card_data(type, number)
+        @backside = generate_cardback
+        @flipped = false
+        @ascii_card = format_card(suit, display_number)
     end
 
 
@@ -76,21 +76,21 @@ class Card
 
         suit = suits[type]
         if type == 'spades' or type == 'clubs'
-          suit = suit.set_attributes([30], [107, 30]) # FG = Black, return to BG = White, FG = Black
+            suit = suit.set_attributes([30], [107, 30]) # FG = Black, return to BG = White, FG = Black
         else
-          suit = suit.set_attributes([31], [107, 30]) # FG = Red, return to BG = White, FG = Black
+            suit = suit.set_attributes([31], [107, 30]) # FG = Red, return to BG = White, FG = Black
         end
 
         if number < 10 and number != 1
-          value = number
-          display_number = number.to_s
+            value = number
+            display_number = number.to_s
         elsif number >= 10 and number != 11
-          value = 10
-          display_number = special_cards[number]
+            value = 10
+            display_number = special_cards[number]
         else
-          ace = true
-          value = 11  # Set value of ace to 11, since we can then just downgrade the value to 1 if the need arises
-          display_number = 'A'
+            ace = true
+            value = 11  # Set value of ace to 11, since we can then just downgrade the value to 1 if the need arises
+            display_number = 'A'
         end
 
         return suit, value, display_number, ace
@@ -99,7 +99,9 @@ class Card
     # Generates a cardback ASCII art
     # @return [string] the cardback ASCII art
     def generate_cardback
-        ("┌─────────┐\n" + ("│░░░░░░░░░│\n" * 7) + '└─────────┘').set_attributes([107, 30]) # BG = White, FG = Black
+        ("┌─────────┐\n" +
+        ("│░░░░░░░░░│\n" * 7) +
+         '└─────────┘').set_attributes([107, 30]) # BG = White, FG = Black
     end
 
     # Flips over the card so that the cardback is shown instead of the generated ASCII card

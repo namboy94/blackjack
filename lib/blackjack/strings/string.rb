@@ -19,21 +19,31 @@
 #    along with ruby-blackjack. If not, see <http://www.gnu.org/licenses/>.
 #
 
+# Class that modifies the String class and equips it with a method to set terminal properties of a string
 class String
 
-  def set_attributes(attributes = [], previous_attributes = [])
+  # Sets the terminal attributes of the string
+  # @param [int Array] attributes the attributes of the string to be set
+  # @param [int Array] previous_attributes the attributes to be set after this string. If this parameter is not
+  #                                        set, the default terminal values are loaded
+  # @return [string] the string with the attributes set
+  def set_attributes(attributes, previous_attributes = [])
+
     mode_start_string = ''
     modes_end_string = "\e[0m"
     attributes.each { |attribute|
       mode_start_string += "\e[#{attribute}m"
     }
-    colorized_string = mode_start_string
-    colorized_string += self.gsub("\n", "#{modes_end_string}\n#{mode_start_string}")
-    colorized_string += modes_end_string
+    attributed_string = mode_start_string
+    attributed_string += self.gsub("\n", "#{modes_end_string}\n#{mode_start_string}")
+    attributed_string += modes_end_string
+
     previous_attributes.each { |attribute|
-      colorized_string += "\e[#{attribute}m"
+      attributed_string += "\e[#{attribute}m"
     }
-    colorized_string
+    attributed_string
   end
 
 end
+
+# TODO Maybe replace previous attributes by just replacing all 0m's
