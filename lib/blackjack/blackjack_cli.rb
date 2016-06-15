@@ -20,6 +20,7 @@
 #
 
 require_relative('game.rb')
+require_relative('strings/string.rb')
 
 # Class that offers an interactive interface for the user to play blackjack
 class BlackjackCli
@@ -28,11 +29,15 @@ class BlackjackCli
   end
 
   def gameloop
-    puts 'Blackjack CLI started'
+    puts 'Blackjack CLI started'.set_attributes([47, 30])
     blackjack = Game.new
+    new_game = true
 
     while true
-      print_result(blackjack.start)
+      if new_game
+        print_result(blackjack.start)
+        new_game = false
+      end
 
       result = nil
       case getplaycommand
@@ -47,21 +52,34 @@ class BlackjackCli
       print_result(result)
 
       if result[2] == 'win'
-        puts 'You won!'
+        puts 'You won!'.set_attributes([47, 30])
       elsif result[2] == 'loss'
-        puts 'You lost :('
+        puts 'You lost :('.set_attributes([47, 30])
+      elsif result[2] == 'draw'
+        puts "It's a draw".set_attributes([47, 30])
       end
+
+      if result[2] != 'undecided'
+        new_game = true
+        pause_when_game_ends
+      end
+
     end
   end
 
-  def print_result(result)
-    puts 'Player cards:'
-    puts print_cards(result[0])
-    puts 'Dealer cards:'
-    puts print_cards(result[1])
+  def pause_when_game_ends
+    puts 'Press enter to continue'.set_attributes([47, 30])
+    gets
   end
 
-  def print_cards(cards)
+  def print_result(result)
+    puts "Player Cards: (#{Game.calculate_optimal_card_score(result[0])})".set_attributes([47, 30])
+    puts format_cards(result[0])
+    puts "\nDealer Cards: (#{Game.calculate_optimal_card_score(result[1])})".set_attributes([47, 30])
+    puts format_cards(result[1])
+  end
+
+  def format_cards(cards)
     cards_string = ''
 
     card_parts = []
@@ -83,10 +101,10 @@ class BlackjackCli
   end
 
   def getplaycommand
-    puts 'What would you like to do? (hit|stand)'
+    puts 'What would you like to do? (hit|stand)'.set_attributes([47, 30])
     input = gets
     while not input == "hit\n" and not input == "stand\n"
-      puts "Please enter 'hit' or 'stand'"
+      puts "Please enter 'hit' or 'stand'".set_attributes([47, 30])
       input = gets
     end
     input
