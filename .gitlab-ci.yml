@@ -9,8 +9,6 @@ mirror_repo:
         - master
     script:
         - git push -u git@github.com:namboy94/ruby-blackjack.git master
-        #- git push -u git@gitlab.com:namboy94/ruby-blackjack.git master
-        #- git push -u git@bitbucket.org:namboy94/ruby-blackjack.git master
 
 build_gem:
     stage: build
@@ -27,7 +25,5 @@ deploy_gem:
     only:
         - master
     script:
+        - gem build ruby-blackjack.gemspec
         - gem push ./*.gem
-        - rm ./*.gem
-    dependencies:
-        - build_gem
