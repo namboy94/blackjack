@@ -1,3 +1,5 @@
+#!/usr/bin/env ruby
+
 # Copyright 2016 Hermann Krumrey
 #
 # This file is part of ruby-blackjack.
@@ -21,7 +23,5 @@
 
 require_relative('../lib/blackjack/blackjack_cli')
 
-if __FILE__ == $0
-    cli = BlackjackCli.new
-    cli.game_loop
-end
+cli = BlackjackCli.new
+cli.game_loop

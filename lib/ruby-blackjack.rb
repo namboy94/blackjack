@@ -19,21 +19,4 @@
 #    along with ruby-blackjack. If not, see <http://www.gnu.org/licenses/>.
 #
 
-Gem::Specification.new do |gem|
-    gem.name        = 'ruby-blackjack'
-    gem.version     = '0.1.0'
-
-    gem.summary     = 'Ruby Blackjack'
-    gem.description = 'A Blackjack CLI game'
-    gem.license     = 'GPL-3.0'
-
-    gem.authors     = ['Hermann Krumrey']
-    gem.email       = 'hermann@krumreyh.com'
-    gem.homepage    = 'http://gitlab.namibsun.net/namboy94/ruby-blackjack'
-
-    #gem.add_dependency('rake')
-    #gem.add_development_dependency('rspec')
-
-    gem.files       = Dir['Rakefile', '{bin,lib,man,test,spec}/**/*', 'README*', 'LICENSE*']
-    gem.executables << 'blackjack'
-end
+require_relative('../lib/blackjack/blackjack_cli')
