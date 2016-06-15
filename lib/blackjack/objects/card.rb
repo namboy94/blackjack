@@ -24,6 +24,8 @@
 # blackjack and generates ASCII art of the card
 class Card
 
+  # Creates a new card
+  # The constructor generates ASCII art of the card and calculates its blackjack value
   def initialize(type, number)
 
     top = '┌─────────┐'
@@ -55,13 +57,13 @@ class Card
 
   end
 
+  # Prints the card art to the console
   def print_card
     puts @ascii_card
   end
 
-end
-
-if __FILE__ == $0
-  card = Card.new('spades', 11)
-  card.print_card
+  # Generates a cardback ASCII art
+  def self.generate_cardback
+    return "┌─────────┐\n" + ("│░░░░░░░░░│\n" * 6) + '└─────────┘'
+  end
 end
