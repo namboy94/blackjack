@@ -31,3 +31,33 @@ Started GET "/assets/home.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450
 
 
 Started GET "/assets/application.self-3b8dabdc891efe46b9a144b400ad69e37d7e5876bdc39dee783419a69d7ca819.js?body=1" for ::1 at 2016-06-16 09:43:00 +0200
+
+
+Started GET "/" for ::1 at 2016-06-16 12:21:47 +0200
+Processing by HomeController#index as HTML
+  Rendered home/index.html.erb within layouts/application (0.9ms)
+Completed 200 OK in 153ms (Views: 146.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2016-06-16 12:23:38 +0200
+Processing by HomeController#index as HTML
+  Rendered home/index.html.erb within layouts/application (0.1ms)
+Completed 200 OK in 12ms (Views: 11.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2016-06-16 12:27:14 +0200
+Processing by HomeController#index as HTML
+  Rendered home/index.html.erb within layouts/application (9.5ms)
+Completed 200 OK in 164ms (Views: 156.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2016-06-16 12:27:38 +0200
+Processing by HomeController#index as HTML
+  Rendered home/index.html.erb within layouts/application (12.8ms)
+Completed 200 OK in 164ms (Views: 156.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2016-06-16 12:28:48 +0200
+Processing by HomeController#index as HTML
+  Rendered home/index.html.erb within layouts/application (12.6ms)
+Completed 200 OK in 164ms (Views: 157.0ms | ActiveRecord: 0.0ms)
