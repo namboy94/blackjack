@@ -100,10 +100,15 @@ class Game
     # @return [Card Array, Card Array, string] the result of the drawing. Refer to evaluate() for details
     def stand
         @dealer_cards[1].flip_over
-        while @dealer_score < 17
-            hit(true)
+        result = [@player_cards.clone, @dealer_cards.clone, 'undecided']
+        while @dealer_score < 17 and result[2] == 'undecided'
+            result = hit(true)
         end
-        evaluate(true)
+        if result[2] == 'undecided'
+            evaluate(true)
+        else
+            result
+        end
     end
 
 
@@ -143,11 +148,12 @@ class Game
     # Resets the game to enable starting a new game.
     # @return [Card Array, Card Array] the user's cards and the dealer's cards
     def cleanup
+        if @dealer_cards[1].is_flipped
+            @dealer_cards[1].flip_over
+        end
         @used_cards += @player_cards + @dealer_cards
         @player_score = 0
         @dealer_score = 0
-        @player_ace_count = 0
-        @dealer_ace_count = 0
         old_player_cards = @player_cards.clone
         old_dealer_cards = @dealer_cards.clone
         @player_cards = []

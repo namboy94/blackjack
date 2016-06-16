@@ -27,7 +27,7 @@
 
 Gem::Specification.new do |gem|
     gem.name        = 'ruby-blackjack'
-    gem.version     = '0.2'
+    gem.version     = '0.3'
 
     gem.summary     = 'Ruby Blackjack'
     gem.description = 'A Blackjack CLI game'

@@ -61,7 +61,7 @@ class BlackjackCli
         elsif result[2] == 'loss'
             puts ' You lost :( '.set_attributes([RED_BG, BLACK_FG])
         elsif result[2] == 'draw'
-            puts " It's a draw ".set_attributes([[YELLOW_BG, BLACK_FG]])
+            puts " It's a draw ".set_attributes([YELLOW_BG, BLACK_FG])
         end
 
         if result[2] != 'undecided'
