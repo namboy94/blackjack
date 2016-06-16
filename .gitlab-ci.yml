@@ -27,3 +27,4 @@ deploy_gem:
     script:
         - gem build ruby-blackjack.gemspec
         - gem push ./*.gem
+    allow_failure: true
