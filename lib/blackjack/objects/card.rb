@@ -48,14 +48,14 @@ class Card
     # @return [string] the ASCII card
     def format_card(suit, number)
 
-        top =       '┌─────────┐'
-        empty_row = "|         |\n"
-        bottom =    '└─────────┘'
+        top =       '┌───────────┐'
+        empty_row = "|           |\n"
+        bottom =    '└───────────┘'
 
-        offset = 8 - number.length
+        offset = 10 - number.length
 
         ascii_card = "#{top}\n| #{number}" + ' ' * offset + "|\n"
-        ascii_card += empty_row * 2 + "|    #{suit}    |\n" + empty_row * 2
+        ascii_card += empty_row * 2 + "|     #{suit}     |\n" + empty_row * 2
         ascii_card += '|' + ' ' * offset + "#{number} |\n#{bottom}"
         ascii_card.set_attributes([WHITE_BG, BLACK_FG])
     end
@@ -99,9 +99,9 @@ class Card
     # Generates a cardback ASCII art
     # @return [string] the cardback ASCII art
     def generate_cardback
-        ("┌─────────┐\n" +
-        ("│░░░░░░░░░│\n" * 7) +
-         '└─────────┘').set_attributes([WHITE_BG, BLACK_FG])
+        ("┌───────────┐\n" +
+        ("│░░░░░░░░░░░│\n" * 7) +
+         '└───────────┘').set_attributes([WHITE_BG, BLACK_FG])
     end
 
     # Flips over the card so that the cardback is shown instead of the generated ASCII card
