@@ -10,7 +10,7 @@ github_mirror:
   script:
     - git checkout master
     - git pull
-    - git push git@github.com:namboy94/ruby-blackjack.git master -f
+    - git push git@github.com:namboy94/blackjack.git master -f
 
 build_gem:
   stage: build
