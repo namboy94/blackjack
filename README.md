@@ -22,4 +22,4 @@ Then start the program using the command `blackjack`
 * [Github](https://github.com/namboy94/etosha-safari)
 * [Git Statistics (gitstats)](https://gitstats.namibsun.net/gitstats/etosha-safari/index.html)
 * [Git Statistics (git_stats)](https://gitstats.namibsun.net/git_stats/etosha-safari/index.html)
-* [Rubygems site]("https://rubygems.org/gems/ruby-blackjack")
+* [Rubygems site](https://rubygems.org/gems/ruby-blackjack)
