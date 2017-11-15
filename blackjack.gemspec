@@ -26,7 +26,7 @@
 # curl -u <username> https://rubygems.org/api/v1/api_key.yaml > ~/.gem/credentials; chmod 0600 ~/.gem/credentials
 
 Gem::Specification.new do |gem|
-    gem.name        = 'blackjack'
+    gem.name        = 'ruby-blackjack'
     gem.version     = File.open('version').read
 
     gem.summary     = 'Blackjack'
