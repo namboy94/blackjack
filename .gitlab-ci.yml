@@ -34,5 +34,5 @@ publish_gem:
     - mkdir -p ~/.gem/
     - echo $RUBYGEMS_CREDENTIALS > ~/.gem/credentials
     - chmod 0600 ~/.gem/credentials
-    - gem push artifacts/*.gem
+    - gem push ./*.gem
     - rm ~/.gem/credentials
