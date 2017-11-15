@@ -19,7 +19,7 @@
 #    along with ruby-blackjack. If not, see <http://www.gnu.org/licenses/>.
 #
 
-require_relative('../lib/blackjack/blackjack_cli')
+require_relative('../src/blackjack/blackjack_cli')
 
 cli = BlackjackCli.new
 cli.game_loop

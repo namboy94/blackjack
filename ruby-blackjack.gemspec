@@ -27,7 +27,7 @@
 
 Gem::Specification.new do |gem|
     gem.name        = 'ruby-blackjack'
-    gem.version     = '0.4'
+    gem.version     = '0.5'
 
     gem.summary     = 'Ruby Blackjack'
     gem.description = 'A Blackjack CLI game'
@@ -35,11 +35,11 @@ Gem::Specification.new do |gem|
 
     gem.authors     = ['Hermann Krumrey']
     gem.email       = 'hermann@krumreyh.com'
-    gem.homepage    = 'http://gitlab.namibsun.net/namboy94/ruby-blackjack'
+    gem.homepage    = 'https://gitlab.namibsun.net/namboy94/ruby-blackjack'
 
     #gem.add_dependency('rake')
     #gem.add_development_dependency('rspec')
 
-    gem.files       = Dir['Rakefile', '{bin,lib,man,test,spec}/**/*', 'README*', 'LICENSE*']
+    gem.files       = Dir['Rakefile', '{bin,src,man,test,spec}/**/*', 'README*', 'LICENSE*']
     gem.executables << 'blackjack'
 end
