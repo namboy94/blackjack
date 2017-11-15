@@ -18,15 +18,17 @@ build_gem:
     - gem
     - ruby
   script:
-    - gem build ruby-blackjack.gemspec
+    - mkdir -p artifacts
+    - gem build blackjack.gemspec
+    - mv *.gem artifacts/
   artifacts:
     paths:
-      - ./*.gem
+      - artifacts/*
 
 publish_gem:
   stage: publish
-  only:
-    - master
+#  only:
+#    - master
   tags:
     - gem
     - ruby
@@ -34,5 +36,33 @@ publish_gem:
     - mkdir -p ~/.gem/
     - echo $RUBYGEMS_CREDENTIALS > ~/.gem/credentials
     - chmod 0600 ~/.gem/credentials
-    - gem push ./*.gem
+    - gem push artifacts/*.gem
     - rm ~/.gem/credentials
+
+upload_release_to_github:
+  stage: publish
+  only:
+    - master
+  tags:
+    - python
+  script:
+    - mkdir -p artifacts
+    - git clone https://gitlab.namibsun.net/namboy94/github-release-uploader.git
+    - git clone https://gitlab.namibsun.net/namboy94/changelog-reader.git
+    - python changelog-reader/changelog-reader.py -c CHANGELOG -d current_changelog
+    - python github-release-uploader/github-release-uploader.py namboy94 blackjack $GITHUB_ACCESS_TOKEN
+      $(cat version) current_changelog artifacts -b master
+
+upload_release_to_gitlab:
+  stage: publish
+  only:
+    - master
+  tags:
+    - python
+  script:
+    - mkdir -p artifacts
+    - git clone https://gitlab.namibsun.net/namboy94/gitlab-release-uploader.git
+    - git clone https://gitlab.namibsun.net/namboy94/changelog-reader.git
+    - python changelog-reader/changelog-reader.py -c CHANGELOG -d  current_changelog
+    - python gitlab-release-uploader/gitlab-release-uploader.py namboy94 blackjack $GITLAB_ACCESS_TOKEN
+      $(cat version) current_changelog artifacts -b master -u https://gitlab.namibsun.net

@@ -1,1 +1,7 @@
-This project currently does not maintain a changelog file.
+Version 1.0.0:
+  - Removed rails files
+  - Fixed build procedure
+  - Added Metadata files
+  - Added Logo
+  - Fixed Build procedure
+  - Changed project name from 'ruby-blackjack' to just 'blackjack'
