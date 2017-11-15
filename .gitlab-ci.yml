@@ -27,8 +27,8 @@ build_gem:
 
 publish_gem:
   stage: publish
-#  only:
-#    - master
+  only:
+    - master
   tags:
     - gem
     - ruby
