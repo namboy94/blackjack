@@ -1,0 +1,36 @@
+stages:
+  - mirror
+  - build
+  - publish
+
+github_mirror:
+  stage: mirror
+  tags:
+    - github_namboy94_push
+  script:
+    - git checkout master
+    - git pull
+    - git push git@github.com:namboy94/ruby-blackjack.git master -f
+
+build_gem:
+  stage: build
+  tags:
+    - gem
+    - ruby
+  script:
+    - gem build ruby-blackjack.gemspec
+  artifacts:
+    paths:
+      - ./*.gem
+
+publish_gem:
+  stage: publish
+  only:
+    - master
+  tags:
+    - gem
+    - ruby
+  script:
+    - mkdir -p ~/.gem/
+    - echo $RUBYGEMS_CREDENTIALS > ~/.gem/credentials
+    - gem push artifacts/*.gem

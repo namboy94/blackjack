@@ -1,0 +1,6 @@
+#!/usr/bin/env ruby
+
+require_relative('../src/blackjack_cli')
+
+cli = BlackjackCli.new
+cli.game_loop
