@@ -35,7 +35,7 @@ Gem::Specification.new do |gem|
 
     gem.authors     = ['Hermann Krumrey']
     gem.email       = 'hermann@krumreyh.com'
-    gem.homepage    = 'https://gitlab.namibsun.net/namboy94/ blackjack'
+    gem.homepage    = 'https://gitlab.namibsun.net/namboy94/blackjack'
 
     #gem.add_dependency('rake')
     #gem.add_development_dependency('rspec')

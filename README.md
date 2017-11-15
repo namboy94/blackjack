@@ -12,7 +12,7 @@ To install the program, simply run
 
     gem install blackjack
 
-Then start the program using the command 'blackjack'
+Then start the program using the command `blackjack`
 
 ## Further Information
 
