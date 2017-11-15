@@ -19,23 +19,23 @@
 #    along with ruby-blackjack. If not, see <http://www.gnu.org/licenses/>.
 #
 
-# To build, enter 'gem build ruby-blackjack.gemspec'
+# To build, enter 'gem build blackjack.gemspec'
 # To publish, enter 'gem push ruby-blackjack-<version>.gem'
 # To install, enter 'gem install ruby-blackjack-<version>.gem'
 # To store credentials locally, enter
 # curl -u <username> https://rubygems.org/api/v1/api_key.yaml > ~/.gem/credentials; chmod 0600 ~/.gem/credentials
 
 Gem::Specification.new do |gem|
-    gem.name        = 'ruby-blackjack'
-    gem.version     = '0.5'
+    gem.name        = 'blackjack'
+    gem.version     = File.open('version').read
 
-    gem.summary     = 'Ruby Blackjack'
+    gem.summary     = 'Blackjack'
     gem.description = 'A Blackjack CLI game'
     gem.license     = 'GPL-3.0'
 
     gem.authors     = ['Hermann Krumrey']
     gem.email       = 'hermann@krumreyh.com'
-    gem.homepage    = 'https://gitlab.namibsun.net/namboy94/ruby-blackjack'
+    gem.homepage    = 'https://gitlab.namibsun.net/namboy94/ blackjack'
 
     #gem.add_dependency('rake')
     #gem.add_development_dependency('rspec')
