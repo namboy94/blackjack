@@ -16,14 +16,16 @@
 # along with ruby-blackjack. If not, see <http://www.gnu.org/licenses/>.
 
 Gem::Specification.new do |gem|
-    gem.name        = 'ruby-blackjack'
-    gem.version     = File.open('version').read
-    gem.summary     = 'Blackjack'
-    gem.description = 'A Blackjack CLI game'
-    gem.license     = 'GPL-3.0'
-    gem.authors     = ['Hermann Krumrey']
-    gem.email       = 'hermann@krumreyh.com'
-    gem.homepage    = 'https://gitlab.namibsun.net/namboy94/blackjack'
-    gem.files       = Dir['Rakefile', '{bin,src,man,test,spec}/**/*', 'README*', 'LICENSE*']
-    gem.executables << 'blackjack'
+  gem.name        = 'ruby-blackjack'
+  gem.version     = File.open('version').read
+  gem.summary     = 'Blackjack'
+  gem.description = 'A Blackjack CLI game'
+  gem.license     = 'GPL-3.0'
+  gem.authors     = ['Hermann Krumrey']
+  gem.email       = 'hermann@krumreyh.com'
+  gem.homepage    = 'https://gitlab.namibsun.net/namboy94/blackjack'
+  gem.files       = Dir[
+      'Rakefile', '{bin,src,man,test,spec}/**/*', 'README*', 'LICENSE*'
+  ]
+  gem.executables << 'blackjack'
 end

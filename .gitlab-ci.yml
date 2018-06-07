@@ -3,15 +3,15 @@ stages:
   - stats
   - release
 
-stylecheck:
-  stage: test
-  tags:
-    - python3
-    - ruby
-    - gem
-  script:
-    - python3 -m venv virtual && source virtual/bin/activate && pip install ci-scripts
-    - ruby-rubocop
+#stylecheck:
+#  stage: test
+#  tags:
+#    - python3
+#    - ruby
+#    - gem
+#  script:
+#    - python3 -m venv virtual && source virtual/bin/activate && pip install ci-scripts
+#    - ruby-rubocop
 
 build_gem:
   stage: test

@@ -25,19 +25,19 @@ class String
   # @return [string] the string with the attributes set
   def set_attributes(attributes, previous_attributes = [])
 
-      mode_start_string = ''
-      modes_end_string = "\e[0m"
-      attributes.each { |attribute|
-          mode_start_string += "\e[#{attribute}m"
-      }
-      attributed_string = mode_start_string
-      attributed_string += self.gsub("\n", "#{modes_end_string}\n#{mode_start_string}")
-      attributed_string += modes_end_string
+    mode_start_string = ''
+    modes_end_string = "\e[0m"
+    attributes.each { |attribute|
+      mode_start_string += "\e[#{attribute}m"
+    }
+    attributed_string = mode_start_string
+    attributed_string += self.gsub("\n", "#{modes_end_string}\n#{mode_start_string}")
+    attributed_string += modes_end_string
 
-      previous_attributes.each { |attribute|
-          attributed_string += "\e[#{attribute}m"
-      }
-      attributed_string
+    previous_attributes.each { |attribute|
+      attributed_string += "\e[#{attribute}m"
+    }
+    attributed_string
   end
 
 end
