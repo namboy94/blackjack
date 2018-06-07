@@ -1,6 +1,8 @@
-Version 1.0.1:
+V 1.0.2:
+  - Integrated ci-scripts
+V 1.0.1:
   - Fix version conflict
-Version 1.0.0:
+V 1.0.0:
   - Removed rails files
   - Fixed build procedure
   - Added Metadata files

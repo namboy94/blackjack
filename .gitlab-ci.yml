@@ -1,68 +1,70 @@
 stages:
-  - mirror
-  - build
-  - publish
+  - test
+  - stats
+  - release
 
-github_mirror:
-  stage: mirror
-  tags:
-    - github_namboy94_push
-  script:
-    - git checkout master
-    - git pull
-    - git push git@github.com:namboy94/blackjack.git master -f
+#stylecheck:
+#  stage: test
+#  tags:
+#    - python3
+#    - ruby
+#    - gem
+#  script:
+#    - python3 -m venv virtual && source virtual/bin/activate && pip install ci-scripts
+#    - ruby-rubocop
 
 build_gem:
-  stage: build
+  stage: test
   tags:
-    - gem
     - ruby
+    - gem
+    - python3
   script:
-    - mkdir -p artifacts
-    - gem build blackjack.gemspec
-    - mv *.gem artifacts/
+    - python3 -m venv virtual && source virtual/bin/activate && pip install ci-scripts
+    - ruby-gem-build
   artifacts:
+    expire_in: 1 week
     paths:
       - artifacts/*
 
+gitstats:
+  stage: stats
+  tags:
+    - python3
+    - gitstats
+    - progstats
+  script:
+    - python3 -m venv virtual && source virtual/bin/activate && pip install ci-scripts
+    - gitstats-gen
+
+docgen:
+  stage: stats
+  tags:
+    - python3
+    - progstats
+  script:
+    - python3 -m venv virtual && source virtual/bin/activate && pip install ci-scripts
+    - rdoc-docgen
+
+release_upload:
+  stage: release
+  only:
+    - master
+  tags:
+    - python3
+  script:
+    - python3 -m venv virtual && source virtual/bin/activate && pip install ci-scripts
+    - github-release-upload $(cat version) "$(changelog-reader)"
+    - gitlab-release-upload $(cat version) "$(changelog-reader)"
+
 publish_gem:
-  stage: publish
+  stage: release
   only:
     - master
   tags:
     - gem
     - ruby
+    - python3
   script:
-    - mkdir -p ~/.gem/
-    - echo $RUBYGEMS_CREDENTIALS > ~/.gem/credentials
-    - chmod 0600 ~/.gem/credentials
-    - gem push artifacts/*.gem
-    - rm ~/.gem/credentials
-
-upload_release_to_github:
-  stage: publish
-  only:
-    - master
-  tags:
-    - python
-  script:
-    - mkdir -p artifacts
-    - git clone https://gitlab.namibsun.net/namboy94/github-release-uploader.git
-    - git clone https://gitlab.namibsun.net/namboy94/changelog-reader.git
-    - python changelog-reader/changelog-reader.py -c CHANGELOG -d current_changelog
-    - python github-release-uploader/github-release-uploader.py namboy94 blackjack $GITHUB_ACCESS_TOKEN
-      $(cat version) current_changelog artifacts -b master
-
-upload_release_to_gitlab:
-  stage: publish
-  only:
-    - master
-  tags:
-    - python
-  script:
-    - mkdir -p artifacts
-    - git clone https://gitlab.namibsun.net/namboy94/gitlab-release-uploader.git
-    - git clone https://gitlab.namibsun.net/namboy94/changelog-reader.git
-    - python changelog-reader/changelog-reader.py -c CHANGELOG -d  current_changelog
-    - python gitlab-release-uploader/gitlab-release-uploader.py namboy94 blackjack $GITLAB_ACCESS_TOKEN
-      $(cat version) current_changelog artifacts -b master -u https://gitlab.namibsun.net
+    - python3 -m venv virtual && source virtual/bin/activate && pip install ci-scripts
+    - ruby-gem-publish
