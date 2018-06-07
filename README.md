@@ -2,7 +2,7 @@
 
 |master|develop|
 |:----:|:-----:|
-|[![build status](https://gitlab.namibsun.net/namboy94/blackjack/badges/master/build.svg)](https://gitlab.namibsun.net/namboy94/blackjack/commits/master)|[![build status](https://gitlab.namibsun.net/namboy94/blackjack/badges/develop/build.svg)](https://gitlab.namibsun.net/namboy94/blackjack/commits/develop)|
+|[![build status](https://gitlab.namibsun.net/namibsun/ruby/blackjack/badges/master/build.svg)](https://gitlab.namibsun.net/namibsun/ruby/blackjack/commits/master)|[![build status](https://gitlab.namibsun.net/namibsun/ruby/blackjack/badges/develop/build.svg)](https://gitlab.namibsun.net/namibsun/ruby/blackjack/commits/develop)|
 
 ![Logo](resources/logo/logo-readme.png)
 
@@ -16,10 +16,9 @@ Then start the program using the command `blackjack`
 
 ## Further Information
 
-* [Changelog](https://gitlab.namibsun.net/namboy94/etosha-safari/raw/master/CHANGELOG)
-* [License (GPLv3)](https://gitlab.namibsun.net/namboy94/etosha-safari/raw/master/LICENSE)
-* [Gitlab](https://gitlab.namibsun.net/namboy94/etosha-safari)
-* [Github](https://github.com/namboy94/etosha-safari)
-* [Git Statistics (gitstats)](https://gitstats.namibsun.net/gitstats/etosha-safari/index.html)
-* [Git Statistics (git_stats)](https://gitstats.namibsun.net/git_stats/etosha-safari/index.html)
-* [Rubygems site](https://rubygems.org/gems/ruby-blackjack)
+* [Changelog](CHANGELOG)
+* [License (GPLv3)](LICENSE)
+* [Gitlab](https://gitlab.namibsun.net/namibsun/ruby/blackjack)
+* [Github](https://github.com/namboy94/blackjack)
+* [Progstats](https://progstats.namibsun.net/projects/blackjack)
+* [Rubygems](https://rubygems.org/gems/ruby-blackjack)

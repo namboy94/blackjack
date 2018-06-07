@@ -1,19 +1,19 @@
-# Copyright 2016-2017 Hermann Krumrey <hermann@krumreyh.com>
+# Copyright 2016 Hermann Krumrey <hermann@krumreyh.com>
 #
-# This file is part of blackjack.
+# This file is part of ruby-blackjack.
 #
-# blackjack is free software: you can redistribute it and/or modify
+# ruby-blackjack is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
 # the Free Software Foundation, either version 3 of the License, or
 # (at your option) any later version.
 #
-# blackjack is distributed in the hope that it will be useful,
+# ruby-blackjack is distributed in the hope that it will be useful,
 # but WITHOUT ANY WARRANTY; without even the implied warranty of
 # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 # GNU General Public License for more details.
 #
 # You should have received a copy of the GNU General Public License
-# along with blackjack.  If not, see <http://www.gnu.org/licenses/>.
+# along with ruby-blackjack. If not, see <http://www.gnu.org/licenses/>.
 
 # Class that modifies the String class and equips it with a method to set terminal properties of a string
 class String
